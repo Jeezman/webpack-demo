@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackDashboard = require('webpack-dashboard/plugin');
 const merge = require('webpack-merge');
 
 const parts = require('./webpack.parts');
@@ -23,6 +24,7 @@ const commonConfig = merge([
             new HtmlWebpackPlugin({
                 title: 'Webpack Demo',
             }),
+            new WebpackDashboard(),
         ],
     },
     parts.lintJavascript({ include: PATHS.app }),
