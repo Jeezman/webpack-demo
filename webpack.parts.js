@@ -93,6 +93,12 @@ exports.extractCSS = ({ include, exclude, use }) => {
 
 exports.purifyCSS = ({ paths }) => ({
     plugins: [
-        new PurifyCSSPlugin({ paths }),
+        new PurifyCSSPlugin({
+            paths, 
+            purifyOptions: {
+                minify: true, //minifies css code in addition to purifyCSS
+                rejected: true, //logs out removed selectors
+            },
+        }),
     ],
 });
