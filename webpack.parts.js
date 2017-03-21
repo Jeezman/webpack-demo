@@ -43,6 +43,20 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
     },
 });
 
+exports.loadSASS = ({ include, exclude } = {}) => ({
+    module: {
+        rules: [
+            {
+                test: /\.scss$/,
+                include,
+                exclude,
+
+                use: ['style-loader', 'css-loader', 'sass-loader'],
+            },
+        ],
+    },
+});
+
 exports.extractCSS = ({ include, exclude, use }) => {
     //output extracted CSS to a file
     const plugin = new ExtractTextPlugin({
