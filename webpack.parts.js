@@ -57,6 +57,15 @@ exports.loadSASS = ({ include, exclude } = {}) => ({
     },
 });
 
+exports.autoprefix = () => ({
+    loader: 'postcss-loader',
+    options: {
+        plugins: () => ([
+            require('autoprefixer'),
+        ]),
+    },
+});
+
 exports.extractCSS = ({ include, exclude, use }) => {
     //output extracted CSS to a file
     const plugin = new ExtractTextPlugin({
