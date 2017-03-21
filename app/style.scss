@@ -2,4 +2,6 @@ $bg: aqua;
 
 body {
     background: $bg;
+    display: flex;
+    border: 8px solid crimson;
 }

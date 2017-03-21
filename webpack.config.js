@@ -34,6 +34,7 @@ const productionConfig = merge([
     parts.extractCSS({ 
         use: ['css-loader', parts.autoprefix()],
     }),
+    parts.loadSASS(),
 ]);
 
 const developmentConfig = merge([
