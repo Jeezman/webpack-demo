@@ -178,3 +178,7 @@ exports.loadFonts = ({ include, exclude, options } = {})  => ({
         ],
     },
 });
+
+exports.generateSourceMaps = ({ type }) => ({
+    devtool: type,
+})
