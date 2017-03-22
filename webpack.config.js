@@ -40,6 +40,12 @@ const productionConfig = merge([
         paths: glob.sync(`${PATHS.app}/**/*`, { nodir: true }),
     }),
     parts.loadSASS(),
+    parts.loadImages({
+        options: {
+            limit: 15000,
+            name: '[name].[ext]',
+        },
+    }),
 ]);
 
 const developmentConfig = merge([
@@ -49,6 +55,7 @@ const developmentConfig = merge([
     }),
     parts.loadCSS(),
     parts.loadSASS(),
+    parts.loadImages(),
 ]);
 
 module.exports = (env) => {
