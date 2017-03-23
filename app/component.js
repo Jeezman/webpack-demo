@@ -3,6 +3,13 @@ export default (text = 'Hello world People') => {
 
     element.className = 'fa fa-hand-spock-o fa-lg pure-button';
     element.innerHTML = text;
+    element.onclick = () => {
+        import('./lazy').then((lazy) => {
+            element.textContent = lazy.default;
+        }).catch((err) => {
+            console.error(err);
+        });
+    };
 
     return element;
 };
