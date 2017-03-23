@@ -41,12 +41,6 @@ const commonConfig = merge([
 
 const productionConfig = merge([
 
-    {
-        entry: {
-            vendor: ['react'],
-        },
-    },
-
     parts.extractCSS({ 
         use: ['css-loader', parts.autoprefix()],
     }),
@@ -64,6 +58,12 @@ const productionConfig = merge([
     parts.extractBundles([
         {
             name: 'vendor',
+
+            minChunks: ({ resource }) => (
+                resource &&
+                resource.indexOf('node_modules') >= 0 &&
+                resource.match(/\.js$/)
+            ),
         },
     ]),
 ]);
