@@ -1,6 +1,7 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
 const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 exports.devServer = ({ host, port } = {}) => ({
     devServer: {
@@ -188,4 +189,10 @@ exports.extractBundles = (bundles) => ({
     plugins: bundles.map((bundle) => (
         new webpack.optimize.CommonsChunkPlugin(bundle)
     )),
+});
+
+exports.clean = (path) => ({
+    plugins: [
+        new CleanWebpackPlugin([path]),
+    ],
 });
