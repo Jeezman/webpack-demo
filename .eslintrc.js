@@ -18,4 +18,9 @@ module.exports = {
         'no-unused-vars': ['warn'],
         'no-console': 0,
     },
+    parser: 'babel-eslint',
+    parserOptions: {
+        sourceType: module,
+        allowImportExportEverywhere: true,
+    },
 };
