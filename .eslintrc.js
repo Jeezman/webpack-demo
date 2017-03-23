@@ -19,8 +19,11 @@ module.exports = {
         'no-console': 0,
     },
     parser: 'babel-eslint',
+
     parserOptions: {
-        sourceType: module,
+        sourceType: 'module',
+
         allowImportExportEverywhere: true,
+
     },
 };
