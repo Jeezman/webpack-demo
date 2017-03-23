@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackDashboard = require('webpack-dashboard/plugin');
 const merge = require('webpack-merge');
 const glob = require('glob');
+const webpack = require('webpack');
 
 const parts = require('./webpack.parts');
 
@@ -42,8 +43,8 @@ const productionConfig = merge([
 
     {
         entry: {
-	  vendor: ['react'],
-	},
+            vendor: ['react'],
+        },
     },
 
     parts.extractCSS({ 
@@ -59,7 +60,12 @@ const productionConfig = merge([
             name: '[name].[ext]',
         },
     }),
-    parts.generateSourceMaps({ type: 'source-map'})
+    parts.generateSourceMaps({ type: 'source-map'}),
+    parts.extractBundles([
+        {
+            name: 'vendor',
+        },
+    ]),
 ]);
 
 const developmentConfig = merge([
