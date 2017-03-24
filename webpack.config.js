@@ -50,6 +50,16 @@ const productionConfig = merge([
     },
     parts.clean(PATHS.build),
     parts.minifyJavaScript(),
+    parts.minifyCSS({
+        options: {
+            discardComments: {
+                removeAll: true,
+            },
+            //run cssnano in safe mode to avoid
+            //potentially unsafe transformation
+            safe: true,
+        },
+    }),
     parts.attachRevision(),
     parts.extractCSS({ 
         use: ['css-loader', parts.autoprefix()],
