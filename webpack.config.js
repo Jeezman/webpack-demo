@@ -50,7 +50,10 @@ const productionConfig = merge([
         output: {
             chunkFilename: '[name].[chunkhash:8].js',
             filename: '[name].[chunkhash:8].js',
-        }
+        },
+        plugins: [
+            new webpack.HashedModuleIdsPlugin(),
+        ],
     },
     parts.clean(PATHS.build),
     parts.minifyJavaScript(),
