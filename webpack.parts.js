@@ -94,7 +94,7 @@ exports.autoprefix = () => ({
 exports.extractCSS = ({ include, exclude, use }) => {
     //output extracted CSS to a file
     const plugin = new ExtractTextPlugin({
-        filename: '[name].css',
+        filename: '[name].[contenthash:8].css',
     });
     return {
         module: {
