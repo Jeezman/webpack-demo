@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:lib": "webpack --config webpack.lib.js",
     "stats": "webpack --env production --profile --json > stats.json",
     "lint:js": "eslint app/ webpack.*.js --cache",
     "lint:style": "stylelint app/**/*.css",
