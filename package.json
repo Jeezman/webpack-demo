@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "stats": "webpack --env production --profile --json > stats.json",
     "lint:js": "eslint app/ webpack.*.js --cache",
     "lint:style": "stylelint app/**/*.css",
     "start": "webpack-dashboard -- nodemon --watch webpack.config.js --exec \" webpack-dev-server --env development\"",
