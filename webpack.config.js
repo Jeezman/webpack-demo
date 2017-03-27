@@ -37,6 +37,12 @@ const commonConfig = merge([
         },
     }),
     parts.loadJavaScript({ include: PATHS.app }),
+    parts.extractBundles([
+        {
+            name: 'manifest',
+            minChunks: Infinity,
+        },
+    ]),
 ]); 
 
 const productionConfig = merge([
