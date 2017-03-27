@@ -41,6 +41,8 @@ const libraryMinConfig = merge([
         },
     },
     parts.minifyJavaScript({ useSourceMap: true }),
+    parts.clean(PATHS.build),
+    parts.lintJavascript({include: PATHS.lib }),
 ]);
 
 module.exports = [
