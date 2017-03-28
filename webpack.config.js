@@ -1,5 +1,5 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackDashboard = require('webpack-dashboard/plugin');
 const merge = require('webpack-merge');
 const glob = require('glob');
@@ -23,9 +23,9 @@ const commonConfig = merge([
             filename: '[name].js',
         },
         plugins: [
-            new HtmlWebpackPlugin({
-                title: 'Webpack Demo',
-            }),
+            // new HtmlWebpackPlugin({
+            //     title: 'Webpack Demo',
+            // }),
             new WebpackDashboard(),
         ],
     },
@@ -113,8 +113,18 @@ const developmentConfig = merge([
 ]);
 
 module.exports = (env) => {
-    if (env === 'production') {
-        return merge(commonConfig, productionConfig);
-    }
-    return  merge(commonConfig, developmentConfig);
+    // if (env === 'production') {
+    //     return merge(commonConfig, productionConfig);
+    // }
+    // return  merge(commonConfig, developmentConfig);
+
+    const pages = [
+        parts.page({ title: 'Webpack demo' }),
+        parts.page({ title: 'Another demo', path: 'another' }),
+    ];
+    const config = env === 'production' ?
+        productionConfig :
+        developmentConfig;
+
+    return pages.map(page => merge(commonConfig, config, page));
 };
