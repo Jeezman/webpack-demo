@@ -6,6 +6,7 @@ const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const BabiliPlugin = require('babili-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const cssnano = require('cssnano');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 exports.devServer = ({ host, port } = {}) => ({
     devServer: {
@@ -221,6 +222,22 @@ exports.minifyCSS = ({ options }) => ({
             cssProcessor: cssnano,
             cssProcessorOptions: options,
             canPrint: false,
+        }),
+    ],
+});
+
+exports.page = ({
+    path = '',
+    template = require.resolve(
+        'html-webpack-plugin/default_index.ejs'
+    ),
+    title,
+} = {}) => ({
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: `${path && path + '/'}index.html`,
+            template,
+            title,
         }),
     ],
 });
